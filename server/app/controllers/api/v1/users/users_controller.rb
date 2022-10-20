@@ -4,7 +4,7 @@ module Api
       class UsersController < ApplicationController
         def index
           @user = User.all
-          render json: @user
+          render json: @user ,  each_serializer: UsersSerializer
         end
  
         def show
@@ -18,7 +18,7 @@ module Api
           if @user.save
             # userMailer.account_activation(@user).deliver_now
             render json: {
-              
+              user: @user,
               message: 'success',
               token: ::JsonWebToken.encode({
                                             user_id: @user.id
