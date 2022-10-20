@@ -17,7 +17,7 @@ class User < ApplicationRecord
   validates :weight , :numericality => true
   validates :height , :numericality => true
 
-  has_many :route
+  has_many :roupackage
   
 
 end

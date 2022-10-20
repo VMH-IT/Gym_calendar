@@ -5,7 +5,7 @@ module Api
           def index
             @q = Exercise.ransack(params[:q])
             @exercise = @q.result(distinct: true)
-            render json: @exercise
+            render json: @exercise , each_serializer: ::Exercises::ExerciseGymSerializer
           end
 
           private

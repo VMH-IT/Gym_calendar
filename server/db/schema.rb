@@ -78,26 +78,26 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_20_143701) do
     t.index ["category_id"], name: "index_exercises_on_category_id"
   end
 
-  create_table "route_days", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "route_id"
-    t.datetime "date"
-    t.boolean "stause"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["route_id"], name: "index_route_days_on_route_id"
-  end
-
-  create_table "routes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "roupackages", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id"
-    t.string "name_route"
+    t.string "name_roupackage"
     t.string "description"
     t.string "repeat"
     t.datetime "date_start"
     t.datetime "date_end"
-    t.boolean "status_route"
+    t.boolean "status_roupackage"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_routes_on_user_id"
+    t.index ["user_id"], name: "index_roupackages_on_user_id"
+  end
+
+  create_table "route_days", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "roupackage_id"
+    t.datetime "date"
+    t.boolean "stause"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["roupackage_id"], name: "index_route_days_on_roupackage_id"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

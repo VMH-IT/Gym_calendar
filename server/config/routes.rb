@@ -18,7 +18,7 @@ Rails.application.routes.draw do
         resources :users
         resources :sessions , only: [:create]
         resources :exercises
-
+        resources :roupackages
       end
     end
   end
