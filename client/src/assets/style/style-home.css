@@ -1,0 +1,190 @@
+.slide img {
+    width: 100%;
+    height: auto;
+  }
+  
+  /* .background-main {
+    top: 0;
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    position: sticky;
+    background-image: url(@/assets/background.jpg);
+    z-index: 0;
+  } */
+  
+  .main {
+    z-index: 2;
+    position: relative;
+  }
+  
+  .block-intro {
+    background-color: #eaeaea;
+    height: auto;
+  
+  }
+  
+  .block-intro img {
+    height: auto;
+    width: 105%;
+  }
+  
+  .text {
+    position: absolute;
+    padding: 30px;
+    top: 0;
+  }
+  
+  .background-intro {
+    position: relative;
+    color: #444;
+    padding: 0px 15% 40px 15%;
+  
+  }
+  
+  .flex ul:first-child {
+    margin-left: 0px;
+  }
+  
+  .flex ul {
+    margin-left: 40px;
+  }
+  
+  .fa li {
+    margin: 12px 0px;
+    font-size: 15px;
+    color: #444;
+  }
+  
+  .fa-check:before {
+    content: "\f00c";
+  }
+  
+  
+  .service h1 {
+    text-align: center;
+    margin: 30xp 0px;
+  }
+  
+  .group-service {
+    justify-content: space-between;
+    padding: 0px 15% 40px 15%;
+  
+    /* position: absolute; */
+    /* width: 100%; */
+  
+  }
+  
+  .block-intro .group-service .block {
+    margin-top: 200px;
+    width: 30%;
+    background-color: aliceblue;
+    transition: 1s;
+    visibility: hidden;
+  }
+  
+  .block-intro:hover .top .block {
+    display: block;
+    margin-top: 50px;
+    transition: .7s;
+    visibility: visible;
+  }
+  
+  .block-intro:hover .botom .block {
+    display: block;
+    margin-top: 50px;
+    transition: 1.2s;
+    visibility: visible;
+  
+  }
+  
+  .block img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .block .text-service {
+    font-size: 1em;
+    padding: 2px 5px 9px 5px;
+  }
+  
+  .text-hover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(68, 68, 68, 0.815);
+    visibility: hidden;
+    top: 0;
+  }
+  
+  .p {
+    margin: 20px;
+  }
+  
+  .text-hover p {
+  
+    font-size: 1.5em;
+  }
+  
+  .block {
+    position: relative;
+  }
+  
+  .block:hover .text-service {
+    visibility: hidden;
+  }
+  
+  .block:hover .text-hover {
+    visibility: visible;
+    transition: 2s;
+  }
+  
+  .banner {
+    width: 100%;
+    height: 1900px;
+    background-image: url("@/assets/bg3.png");
+  }
+  
+  .banner p{
+    width: 380px;
+  }
+  
+  .banner img{
+    padding:30px 0px ;
+  }
+  
+  .left{
+    text-align: justify;
+    direction: rtl;  
+    margin-right: 30px;
+    margin-top: 100px;
+  }
+  
+  .left .text-banner{
+    margin-right: 200px;
+  }
+  
+  .right .text-banner{
+    margin-left: 200px;
+  }
+  
+  .right{
+    text-align: justify;
+    margin-right: 30px;
+    margin-top: 100px;
+  }
+  
+  .title-banner{
+    font-size: 3em;
+  }
+  /*-----hover----- */
+  
+  .service:hover .left .text-banner{
+    margin-right: 0px;
+    transition: 2s;
+  }
+  
+  .service:hover .right .text-banner{
+    margin-left: 0px;
+    transition: 4s;
+  }
+  

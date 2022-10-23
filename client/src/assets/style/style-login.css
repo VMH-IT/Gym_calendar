@@ -1,0 +1,116 @@
+.logo {
+    margin-left: 80px;
+    height: 60px;
+    width: auto;
+  }
+  .input {
+    margin-left: 10%;
+    width: 60%;
+    height: 30px;
+    border: none;
+    border-radius: 6px;
+  }
+  
+  .background {
+    position: fixed;
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+  
+    background-color: #0e0b01a1;
+    z-index: 100;
+    top: 0;
+    left: 0;
+  }
+  
+  .form-login {
+    height: 650px;
+    border-radius: 5px;
+    margin: 6% auto;
+    /* border: #fecc09 1px solid; */
+    padding: 0 5%;
+    background-color: rgb(71, 70, 70);
+    transition: 2s;
+  
+  }
+  
+  .avata {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 65px 90px 30px 90px;
+    background-color: white;
+    border: solid 4px black;
+  }
+  
+  .avata img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+  .box {
+    margin: 20px 0px;
+  }
+  
+  .bt {
+    padding: 10px 129px;
+    border-radius: 4px;
+    border: 1px solid #fecc09;
+    background-color: rgba(255, 255, 255, 0);
+    margin-top: 20px;
+  }
+  
+  .bt:hover {
+    box-shadow: 0 0 10px #fecc09;
+  }
+  
+  .form-input {
+    border: 1px solid #fecc09;
+    border-radius: 4px;
+    width: 87%;
+    height: 40px;
+    padding: 0 20px;
+    transition: 0.25s ease;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0);
+    color: #fecc09;
+  }
+  
+  .form-input:focus {
+    border-color: #ffd500;
+    box-shadow: 0 0 10px #fecc09;
+  }
+  
+  .form-field {
+    position: relative;
+    margin-top: 30px;
+  
+  }
+  
+  .from-label {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 20px;
+    user-select: none;
+    color: #999;
+    pointer-events: none;
+    transition: 0.25s ease;
+    border-radius: 4px;
+  }
+  
+  .form-input:not(:placeholder-shown)+.from-label,
+  .form-input:focus+.from-label {
+    top: 0;
+    left: 11px;
+    padding: 0 5px;
+    display: inline-block;
+    background-color: rgb(71, 70, 70);
+    color: #fecc09;
+    /* border: 1px solid rgb(255, 225, 0); */
+  }
+  
+  .block-out {
+    align-items: center;
+    display: flex;
+  }
+  

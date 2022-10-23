@@ -7,12 +7,12 @@ module Api
           render json: Category.all, each_serializer: nil
         end
       
-          def search_gym
+          def category_gym
              @gym = Category.where(name_category: "gym")
               render json: @gym, each_serializer: ::Categories::CategoryGymSerializer
           end
 
-          def search_cadio
+          def category_cadio
             @cadio = Category.where(name_category: "cadio").or(Category.where(name_category: "fitness"))
              render json: @cadio, each_serializer:  ::Categories::CategoryCadioSerializer
          end

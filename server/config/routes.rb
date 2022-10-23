@@ -9,8 +9,8 @@ Rails.application.routes.draw do
         resources :admins
         resources :categories do 
           collection do
-            get :search_gym
-            get :search_cadio
+            get :category_gym
+            get :category_cadio
           end
         end
       end
