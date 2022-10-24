@@ -16,9 +16,6 @@
           <li>
             <router-link to="/exerciseStore" class="color">contact</router-link>
           </li>
-          <li>
-            <router-link to="/main" class="color">main</router-link>
-          </li>
           <li class="color" v-on:click="success = !success" v-if="currentUser.token === ''">login</li>
           <li class="color" v-if="currentUser.token !== ''">
             <router-link to="/listgymmer" class="color">admin</router-link>
