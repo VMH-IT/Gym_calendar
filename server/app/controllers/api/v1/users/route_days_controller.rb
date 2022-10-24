@@ -3,31 +3,32 @@ module Api
     module Users
       class RouteDaysController < ApplicationController
         def index
-          @route_day = Route_day.all
+          @route_day = RouteDay.all
           render json: @route_day
         end	
  
         def show
-          @route_day = Route_day.find(params[:id])
+          @route_day = RouteDay.find(params[:id])
           render json: @route_day
         end
 
         def create
-          @route_day = Route_day.new(route_day_params)
+          @route_day = RouteDay.new(route_day_params)
           if @route_day.save
             render json: {
-							route_day: @route_day
-              message: 'success',
+							route_day: @route_day,
+              message: 'success'
             }
           else
             render json: {
-              message: 'failed'
+              message: 'failed',
+              validation: @route_day.errors.messages
             }, status: 400
           end
         end
-
+        
         def update
-          @route_day = Route_day.find(params[:id])
+          @route_day = RouteDay.find(params[:id])
           if @route_day.update(route_day_params)
             render json: @route_day
           else
@@ -42,7 +43,7 @@ module Api
         private
     
         def route_day_params
-          params.permit(:route_id, :date , :stause)
+          params.permit(:roupackage_id, :date, :stause)
         end
       end
     end

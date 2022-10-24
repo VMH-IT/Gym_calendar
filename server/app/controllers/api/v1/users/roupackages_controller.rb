@@ -17,7 +17,7 @@ module Api
           if @roupackage.save
             render json: {
               roupackage: @roupackage,
-              message: 'success',
+              message: 'success'
             }
           else
             render json: {
