@@ -53,6 +53,7 @@ export default new Vuex.Store({
             commit("setToken", response.data.token);
             state.currentUser.email='',
             state.currentUser.password=''
+            this.$router.push('/')
           }
         )
       } catch (error) {

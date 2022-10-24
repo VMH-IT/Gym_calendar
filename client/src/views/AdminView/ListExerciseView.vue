@@ -93,6 +93,7 @@ export default {
     margin: 40px 60px;
     flex-wrap: wrap;
     flex-direction: row;
+    justify-content: center;
 }
 
 .group .item{

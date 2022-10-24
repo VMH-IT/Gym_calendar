@@ -48,7 +48,6 @@ export default {
     signInClone() {
       this.success = !this.success
       this.signIn()
-      this.$router.push('/')
     },
 
     pwd() {

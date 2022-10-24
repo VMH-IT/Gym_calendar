@@ -20,10 +20,8 @@
             <router-link to="/main" class="color">main</router-link>
           </li>
           <li class="color" v-on:click="success = !success" v-if="currentUser.token === ''">login</li>
-          <li class="color" v-if="currentUser.token !== ''">post</li>
-          <li class="color" v-if="currentUser.token !== ''">follow</li>
           <li class="color" v-if="currentUser.token !== ''">
-            <router-link to="/admin/listgymmer" class="color">admin</router-link>
+            <router-link to="/listgymmer" class="color">admin</router-link>
           </li>
           <li class="color" v-if="currentUser.token !== ''" v-on:click="out = !out">out</li>
           <li></li>
@@ -60,6 +58,7 @@
         </div>
         <input type="text" class="input" />
       </div>
+      <div></div>
     </header>
     <div v-show="out" class="background center block-out">
       <div class="out">
@@ -90,13 +89,14 @@ export default {
   },
   computed: mapState(["currentUser"]),
   methods: {
-    ...mapActions(["signInAdmin"]),
+    ...mapActions(["signIn"]),
     // mapMutations(['signOut']),
     signInClone() {
       this.success = !this.success
-      this.signInAdmin()
+      this.signIn()
     },
     signOut(state) {
+      this.out = !this.out
       this.$store.commit("signOut");
     },
 

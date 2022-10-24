@@ -23,20 +23,21 @@
                                 <input type="text" name="" class="form-input" placeholder=" " v-model="image_exercises">
                                 <label class="from-label">input image :</label>
                             </div>
-                            <label class="item-file" for="123">
+                            <!-- <label class="item-file" for="123">
                                 <input type="file" name="video" class="file" @change="previewFiles" id="123">add
                             </label>
-                            <span class="item-file  " v-if="filename"> Selected file: {{filename}}</span>
+                            <span class="item-file  " v-if="filename"> Selected file: {{ filename }}</span> -->
                         </div>
                         <p class="add-item"> select the type</p>
                         <div class="flex group-type">
-                            <label class="center type-item item-file  " v-for="types in type" :key="types.id">
-                                <input class="" type="radio" name="types" v-bind:value="types"
-                                    v-model="category_exercise_id">{{types}}
+                            <label class="center type-item item-file  " v-for="categorys in category"
+                                :key="categorys.id">
+                                <input class="" type="radio" name="types" v-bind:value="categorys.category_id"
+                                    v-model="category_id">{{ categorys.name_category }}
                             </label>
-                            <label class="center item-file  type-item" v-on:click="">
+                            <!-- <label class="center item-file  type-item" v-on:click="">
                                 +
-                            </label>
+                            </label> -->
                         </div>
                         <div class="flex ">
                             <div class="group-time">
@@ -92,10 +93,10 @@
                         <div class="img-err">
                             <img :src="image_exercises" alt="">
                         </div>
-                        <b>{{text_title}}</b>
-                        <p>{{category_exercise_id}}</p>
-                        <p>{{time_exercise}} - {{time_break}}</p>
-                        {{text_content}}
+                        <b>{{ text_title }}</b>
+                        <p>{{ category_id }}</p>
+                        <p>{{ time_exercise }} - {{ time_break }}</p>
+                        {{ text_content }}
                         <div class="end">
                             <button class="bt" v-on:click="add">dan bai</button>
                         </div>
@@ -107,14 +108,14 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from '@/axios';
 import menu from "./Menuview.vue"
 import head from "./headview.vue"
 export default ({
     data() {
         return {
             Title: '',
-            category_exercise_id: '',
+            category_id: '',
             content: '',
             image_exercises: '',
             time_exercise: '',
@@ -124,28 +125,47 @@ export default ({
             min_reps: '',
             max_reps: '',
             highest_weight: '',
-            type: ['gym', 'cadio','fitness'],
+            category: [],
             filename: '',
             text_title: '',
             text_content: '',
             ligatures: ' ...',
         }
     },
+
+    mounted() {
+        this.getCategories()
+    },
     components: {
         "app-head": head,
         "app-menu": menu,
     },
+
     methods: {
         previewFiles(event) {
             this.filename = event.target.files[0].name
             console.log(event.target.files[0]);
         },
+
+        async getCategories() {
+            const categories = {
+                method: "GET",
+                url: 'admins/categories'
+            };
+            await axios(categories).then((res) => {
+                console.log(res.data)
+                this.category = res.data;
+            }).catch((err) => {
+                console.log(err);
+            });
+        },
+
         async add() {
             const respone = await axios.post('http://127.0.0.1:3000/api/v1/admins/exercises', {
                 name_exercise: this.Title,
-                category_id: this.category_exercise_id,
+                category_id: this.category_id,
                 content: this.content,
-                // image_url: this.image_exercises,
+                image_exercise: this.image_exercises,
                 time_exercise: this.time_exercise,
                 time_break: this.time_break,
                 min_sets: this.min_sets,
