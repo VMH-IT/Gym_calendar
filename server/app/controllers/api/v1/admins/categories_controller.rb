@@ -7,15 +7,15 @@ module Api
           render json: Category.all, each_serializer: nil
         end
       
-          def category_gym
-             @gym = Category.where(name_category: "gym")
-              render json: @gym, each_serializer: ::Categories::CategoryGymSerializer
-          end
+        def category_gym
+          @gym = Category.where(name_category: "gym")
+          render json: @gym, each_serializer: ::Categories::CategoryGymSerializer
+        end
 
-          def category_cadio
-            @cadio = Category.where(name_category: "cadio").or(Category.where(name_category: "fitness"))
-             render json: @cadio, each_serializer:  ::Categories::CategoryCadioSerializer
-         end
+        def category_cadio
+          @cadio = Category.where(name_category: "cadio").or(Category.where(name_category: "fitness"))
+          render json: @cadio, each_serializer:  ::Categories::CategoryCadioSerializer
+        end
 
         def create
           @category = Category.new(category_params)
@@ -35,8 +35,7 @@ module Api
         def update
           @category = Category.find(params[:id])
           @category.update(category_params)
-          render json: {category: @category, message: "updated"}
-          
+          render json: {category: @category, message: "updated"}         
         end
         
         def destroy
@@ -53,7 +52,6 @@ module Api
         end
 
         private
-        
         def category_params
           params.permit(:description,:name_category)
         end
