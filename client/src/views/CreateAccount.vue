@@ -36,17 +36,17 @@
                     <div class="dpx">
                       <div class='py'>
                         <label>
+                          <input type="radio" value="0" class="option-input radio" name="example"
+                            v-model="gender" />
+                            female
+                        </label>
+                        <label>
                           <input type="radio" value="1" class="option-input radio" name="example"
                             v-model="gender" />
-                          man
+                            male
                         </label>
                         <label>
                           <input type="radio" value="2" class="option-input radio" name="example"
-                            v-model="gender" />
-                          women
-                        </label>
-                        <label>
-                          <input type="radio" value="3" class="option-input radio" name="example"
                             v-model="gender" />
                           other
                         </label>
@@ -206,6 +206,7 @@ export default ({
       if (this.password == this.Confirm) {
         const respone = await axios.post('http://127.0.0.1:3000/api/v1/users/users', {
           email: this.email,
+          encrypted_password: this.password,
           fname: this.first_name,
           lname: this.last_name,
           weight: this.weight,
@@ -213,7 +214,6 @@ export default ({
           phone: this.phone,
           age: this.age,
           gender: this.gender,
-          encrypted_password: this.password,
         });
         console.log(respone)
         this.$router.push('/login')
