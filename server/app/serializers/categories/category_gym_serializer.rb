@@ -4,5 +4,5 @@ module Categories
                 :description,
                 :name_category
     has_many :exercise, serializer: ::Exercises::ExerciseGymSerializer
-   end
+  end
 end

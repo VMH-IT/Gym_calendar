@@ -13,8 +13,7 @@ module Api
           end
 
           def category_cadio
-            @cadio = Category.where(name_category: "cadio")
-                            .or(Category.where(name_category: "fitness"))
+            @cadio = Category.where(name_category: "cadio").or(Category.where(name_category: "fitness"))
              render json: @cadio, each_serializer:  ::Categories::CategoryCadioSerializer
          end
 
@@ -39,10 +38,24 @@ module Api
           render json: {category: @category, message: "updated"}
           
         end
+        
+        def destroy
+          @category = Category.find(params[:id])
+          if @category.destroy
+            render json: {
+              message: "destroy successfuly"
+            }
+          else
+            render json: {
+              message: "destroy failed" 
+            }, status: 400
+          end
+        end
+
         private
         
         def category_params
-          params.permit(:description ,:name_category)
+          params.permit(:description,:name_category)
         end
       end
     end
