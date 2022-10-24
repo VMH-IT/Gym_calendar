@@ -4,7 +4,7 @@ module Api
       class UsersController < ApplicationController
         def index
           @user = User.all
-          render json: @user , each_serializer: UsersSerializer
+          render json: @user, each_serializer: UsersSerializer
         end
  
         def show
@@ -47,7 +47,7 @@ module Api
         private
     
         def user_params
-          params.permit( :email, :password ,:fname, :lname  , :weight , :height, :phone, :age , :gender  )
+          params.permit(:email, :password, :fname, :lname, :weight, :height, :phone, :age, :gender)
         end
       end
     end

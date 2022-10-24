@@ -4,7 +4,7 @@ module Api
       class RouteDaysController < ApplicationController
         def index
           @route_day = RouteDay.all
-          render json: @route_day
+          render json: @route_day, each_serializer: RouteDaySerializer
         end	
  
         def show
@@ -16,7 +16,7 @@ module Api
           @route_day = RouteDay.new(route_day_params)
           if @route_day.save
             render json: {
-							route_day: @route_day,
+							route_day: @route_day,  
               message: 'success'
             }
           else
@@ -26,7 +26,7 @@ module Api
             }, status: 400
           end
         end
-        
+
         def update
           @route_day = RouteDay.find(params[:id])
           if @route_day.update(route_day_params)

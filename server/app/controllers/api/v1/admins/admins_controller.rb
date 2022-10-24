@@ -3,7 +3,7 @@ module Api
 		module Admins
 			class AdminsController < ApplicationController
 				before_action :authenticate_request_admin 
-				skip_before_action :authenticate_request_admin , only: [:create]
+				skip_before_action :authenticate_request_admin, only: [:create]
 
 				def index 
 					@admin = Admin.all

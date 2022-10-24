@@ -13,7 +13,7 @@ class UsersSerializer < ActiveModel::Serializer
       "female"
     elsif object.gender == 1
       "male"
-    elsif  object.gender == 2
+    elsif object.gender == 2
       "other"
     end
   end

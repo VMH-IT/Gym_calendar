@@ -42,7 +42,7 @@ module Api
         private
     
         def roupackage_params
-          params.permit(:user_id , :name_roupackage , :description , :repeat , :date_start , :date_end , :status_roupackage)
+          params.permit(:user_id, :name_roupackage, :description, :repeat, :date_start, :date_end, :status_roupackage)
         end
       end
     end

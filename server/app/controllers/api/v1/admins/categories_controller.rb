@@ -13,11 +13,11 @@ module Api
           end
 
           def category_cadio
-            @cadio = Category.where(name_category: "cadio").or(Category.where(name_category: "fitness"))
+            @cadio = Category.where(name_category: "cadio")
+                            .or(Category.where(name_category: "fitness"))
              render json: @cadio, each_serializer:  ::Categories::CategoryCadioSerializer
          end
 
-        
         def create
           @category = Category.new(category_params)
           if @category.save
@@ -44,7 +44,6 @@ module Api
         def category_params
           params.permit(:description ,:name_category)
         end
-
       end
     end
   end

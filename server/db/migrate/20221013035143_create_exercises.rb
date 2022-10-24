@@ -11,7 +11,6 @@ class CreateExercises < ActiveRecord::Migration[7.0]
       t.integer :max_reps
       t.integer :highest_weight
       t.text :image_exercise
-      # t.text :video_exercise
 
       t.timestamps
     end

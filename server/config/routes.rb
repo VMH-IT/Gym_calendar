@@ -16,7 +16,7 @@ Rails.application.routes.draw do
       end
       namespace :users do
         resources :users
-        resources :sessions , only: [:create]
+        resources :sessions, only: [:create]
         resources :exercises
         resources :route_days
         resources :roupackages

@@ -1,6 +1,5 @@
 class User < ApplicationRecord
   devise :database_authenticatable
-
   attr_accessor :remember_token
   before_save { email.downcase! }
 
@@ -18,6 +17,4 @@ class User < ApplicationRecord
   validates :height , :numericality => true
 
   has_many :roupackage
-  
-
 end
