@@ -9,7 +9,7 @@ module Api
  
         def show
           @route_day = RouteDay.find(params[:id])
-          render json: @route_day
+          render json: @route_day, each_serializer: RouteDaySerializer
         end
 
         def create

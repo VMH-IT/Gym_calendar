@@ -2,6 +2,7 @@ module Exercises
   class ExerciseGymSerializer < ActiveModel::Serializer
     attributes  :id,
                 :name_exercise, 
+                :content, 
                 :time_exercise, 
                 :time_break, 
                 :min_sets, 

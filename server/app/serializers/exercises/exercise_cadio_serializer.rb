@@ -1,7 +1,8 @@
 module Exercises
   class ExerciseCadioSerializer < ActiveModel::Serializer
     attributes  :id,
-                :name_exercise, 
+                :name_exercise,
+                :content,
                 :time_exercise, 
                 :time_break, 
                 :min_sets, 

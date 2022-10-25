@@ -9,7 +9,7 @@ module Api
         end
         private
         def exercise_params
-          params.permit(:name_exercise, :time_exercise,:time_break, :min_sets, :max_sets, :min_reps, :max_reps, :highest_weight, :category__id)
+          params.permit(:name_exercise, :time_exercise,:time_break, :min_sets, :max_sets, :min_reps, :max_reps, :highest_weight, :category_id, :content)
         end
       end
     end 
