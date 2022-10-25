@@ -4,12 +4,12 @@ module Api
       class RoupackagesController < ApplicationController
         def index
           @roupackage = Roupackage.all
-          render json: @roupackage
+          render json: @roupackage, each_serializer: RoupackageSerializer
         end
  
         def show
           @roupackage = Roupackage.find(params[:id])
-          render json: @roupackage
+          render json: @roupackage, each_serializer: RoupackageSerializer
         end
 
         def create

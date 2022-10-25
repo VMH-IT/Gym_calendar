@@ -3,6 +3,7 @@ module Api
     module Admins
       class ExercisesController < ApplicationController
         def create
+          # binding.pry
           @exercise = Exercise.new(exercise_params)
           @exercise.image.attach(params[:image])
           if @exercise.save
@@ -58,7 +59,7 @@ module Api
 
         private
         def exercise_params
-          params.permit(:name_exercise, :content, :time_exercise, :time_break, :min_sets, :max_sets, :min_reps, :max_reps, :highest_weight, :image_exercise, :image, :category_id)
+          params.permit(:name_exercise, :category_id, :content, :time_exercise, :time_break, :min_sets, :max_sets, :min_reps, :max_reps, :highest_weight, :image)
         end
       end
     end

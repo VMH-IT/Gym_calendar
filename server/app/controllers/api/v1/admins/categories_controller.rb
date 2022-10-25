@@ -4,7 +4,12 @@ module Api
       class CategoriesController < ApplicationController
         def index
           @category = Category.all
-          render json: Category.all, each_serializer: nil
+          render json: Category.all#, each_serializer: nil
+        end
+
+        def show
+          @category = Category.find(params[:id])
+          render json: @category, serializer: nil
         end
       
         def category_gym
@@ -15,7 +20,7 @@ module Api
         def category_cadio
           @cadio = Category.where(name_category: "cadio").or(Category.where(name_category: "fitness"))
           render json: @cadio, each_serializer:  ::Categories::CategoryCadioSerializer
-        end
+        end 
 
         def create
           @category = Category.new(category_params)
