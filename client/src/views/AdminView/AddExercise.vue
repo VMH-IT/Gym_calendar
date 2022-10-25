@@ -7,7 +7,7 @@
                 <div class="title-from ">add exercise</div>
                 <div class="add-item">
                     <div class="form-field">
-                        <input type="text" name="" class="form-input" placeholder=" " v-model="Title"
+                        <input type="text" name="" class="form-input" placeholder=" " v-model="title"
                             v-on:keyup="text_titles">
                         <label class="from-label">Title :</label>
                     </div>
@@ -114,7 +114,7 @@ import head from "./headview.vue"
 export default ({
     data() {
         return {
-            Title: '',
+            title: '',
             category_id: '',
             content: '',
             image_exercises: '',
@@ -162,7 +162,7 @@ export default ({
 
         async add() {
             const respone = await axios.post('http://127.0.0.1:3000/api/v1/admins/exercises', {
-                name_exercise: this.Title,
+                name_exercise: this.title,
                 category_id: this.category_id,
                 content: this.content,
                 image_exercise: this.image_exercises,
@@ -187,8 +187,8 @@ export default ({
             this.$router.push('/AddExercise')
         },
         text_titles() {
-            this.text_title = this.Title.substring(0, 30);
-            if (this.Title.length >= 30) {
+            this.text_title = this.title.substring(0, 30);
+            if (this.title.length >= 30) {
                 return this.text_title = this.text_title + this.ligatures;
             } else {
                 return this.text_title
