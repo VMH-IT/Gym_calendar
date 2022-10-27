@@ -1,51 +1,50 @@
 module Api
-	module V1
-		module Admins
-			class AdminsController < ApplicationController
-				before_action :authenticate_request_admin 
-				skip_before_action :authenticate_request_admin, only: [:create]
+  module V1
+    module Admins
+      class AdminsController < ApplicationController
+        before_action :authenticate_request_admin
+        skip_before_action :authenticate_request_admin, only: [:create]
 
-				def index 
-					@admin = Admin.all
-					render json: @admin  
-				end
+        def index
+          @admin = Admin.all
+          render json: @admin
+        end
 
-				def show
-					@admin = Admin.find(params[:id])
-					render json: @admin
-				end
+        def show
+          @admin = Admin.find(params[:id])
+          render json: @admin
+        end
 
-				def create
-					@admin = Admin.new(admin_params)
-					if @admin.save
-						render json: {
-							message: 'success',
-							token: ::JsonWebToken.encode({
-														  admin_id: @admin.id
-														})
-							}
-					else
-						render json: {
-							message: 'failed'
-						}, status: 400
-					end
-				end
+        def create
+          @admin = Admin.new(admin_params)
+          if @admin.save
+            render json: {
+              message: 'success',
+              token: ::JsonWebToken.encode({
+                                             admin_id: @admin.id
+                                           })
+            }
+          else
+            render json: {
+              message: 'failed'
+            }, status: 400
+          end
+        end
 
-				def update
-					if @admin.update(user_params)
-						render json: @admin
-					else
-						render json: @admin.errors, status: :unprocessable_entity
-					end
-				end
+        def update
+          if @admin.update(user_params)
+            render json: @admin
+          else
+            render json: @admin.errors, status: :unprocessable_entity
+          end
+        end
 
-				private
+        private
 
-				def admin_params
-					params.permit(:email, :password)
-				end
-
-			end
-		end
-	end
+        def admin_params
+          params.permit(:email, :password)
+        end
+      end
+    end
+  end
 end

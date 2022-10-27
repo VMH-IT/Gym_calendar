@@ -10,11 +10,11 @@ class UsersSerializer < ActiveModel::Serializer
               :gender
   def gender
     if object.gender == 0
-      "female"
+      'female'
     elsif object.gender == 1
-      "male"
+      'male'
     elsif object.gender == 2
-      "other"
+      'other'
     end
   end
 end

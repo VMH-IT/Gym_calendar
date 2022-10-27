@@ -4,7 +4,7 @@ class CreateRouteDays < ActiveRecord::Migration[7.0]
       t.belongs_to :roupackage
       t.datetime :date
       t.boolean :stause
-      
+
       t.timestamps
     end
   end

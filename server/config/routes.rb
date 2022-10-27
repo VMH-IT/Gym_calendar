@@ -7,7 +7,7 @@ Rails.application.routes.draw do
         resources :sessions, only: [:create]
         resources :exercises
         resources :admins
-        resources :categories do 
+        resources :categories do
           collection do
             get :category_gym
             get :category_cadio

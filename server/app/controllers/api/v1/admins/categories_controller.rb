@@ -2,35 +2,37 @@ module Api
   module V1
     module Admins
       class CategoriesController < ApplicationController
+        before_action :authenticate_request_admin
+        skip_before_action :authenticate_request_admin, only: [:create]
         def index
           @category = Category.all
-          render json: Category.all#, each_serializer: nil
+          render json: Category.all # , each_serializer: nil
         end
 
         def show
           @category = Category.find(params[:id])
           render json: @category, serializer: nil
         end
-      
+
         def category_gym
-          @gym = Category.where(name_category: "gym")
+          @gym = Category.where(name_category: 'gym')
           render json: @gym, each_serializer: ::Categories::CategoryGymSerializer
         end
 
         def category_cadio
-          @cadio = Category.where(name_category: "cadio").or(Category.where(name_category: "fitness"))
+          @cadio = Category.where(name_category: 'cadio').or(Category.where(name_category: 'fitness'))
           render json: @cadio, each_serializer:  ::Categories::CategoryCadioSerializer
-        end 
+        end
 
         def create
           @category = Category.new(category_params)
           if @category.save
-            render json:{
+            render json: {
               category: @category,
-              message: 'success'  
+              message: 'success'
             }
           else
-            render json:{ 
+            render json: {
               message: 'failed',
               validation: @category.errors.messages
             }, status: 400
@@ -40,25 +42,26 @@ module Api
         def update
           @category = Category.find(params[:id])
           @category.update(category_params)
-          render json: {category: @category, message: "updated"}         
+          render json: { category: @category, message: 'updated' }
         end
-        
+
         def destroy
           @category = Category.find(params[:id])
           if @category.destroy
             render json: {
-              message: "destroy successfuly"
+              message: 'destroy successfuly'
             }
           else
             render json: {
-              message: "destroy failed" 
+              message: 'destroy failed'
             }, status: 400
           end
         end
 
         private
+
         def category_params
-          params.permit(:description,:name_category)
+          params.permit(:description, :name_category)
         end
       end
     end

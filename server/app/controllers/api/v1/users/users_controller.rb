@@ -2,6 +2,8 @@ module Api
   module V1
     module Users
       class UsersController < ApplicationController
+        before_action :authenticate_request_user
+        skip_before_action :authenticate_request_user, only: [:create]
         def index
           @user = User.all
           render json: @user, each_serializer: UsersSerializer

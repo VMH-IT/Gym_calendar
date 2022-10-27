@@ -2,11 +2,13 @@ module Api
   module V1
     module Users
       class RoupackagesController < ApplicationController
+        before_action :authenticate_request_user
+        skip_before_action :authenticate_request_user, only: [:create]
         def index
           @roupackage = Roupackage.all
           render json: @roupackage, each_serializer: RoupackageSerializer
         end
- 
+
         def show
           @roupackage = Roupackage.find(params[:id])
           render json: @roupackage, each_serializer: RoupackageSerializer
@@ -38,9 +40,9 @@ module Api
         def destroy
           @roupackage.destroy
         end
-      
+
         private
-    
+
         def roupackage_params
           params.permit(:user_id, :name_roupackage, :description, :repeat, :date_start, :date_end, :status_roupackage)
         end

@@ -6,14 +6,14 @@ module Api
           @user = User.find_by(email: params[:email])
           if @user && @user.valid_password?(params[:password])
             render json: {
-                          message: 'sucesss',
-                          token: ::JsonWebToken.encode({
-                                                        user_id: @user.id
-                                                         })
+              message: 'sucesss',
+              token: ::JsonWebToken.encode({
+                                             user_id: @user.id
+                                           })
             }
           else
             render json: {
-                           message: 'failed' 
+              message: 'failed'
             }, status: 400
           end
         end
