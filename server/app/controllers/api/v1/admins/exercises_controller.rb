@@ -21,9 +21,14 @@ module Api
           end
         end
 
-        def index
+        def search_exercise
           @q = Exercise.ransack(params[:q])
           @exercise = @q.result(distinct: true)
+          render json: @exercise, each_serializer: ::Exercises::ExerciseGymSerializer
+        end
+
+        def index
+          @exercise = Exercise.all
           render json: @exercise, each_serializer: ::Exercises::ExerciseGymSerializer
         end
 
@@ -63,8 +68,17 @@ module Api
         private
 
         def exercise_params
-          params.permit(:name_exercise, :category_id, :content, :time_exercise, :time_break, :min_sets, :max_sets,
-                        :min_reps, :max_reps, :highest_weight, :image)
+          params.permit(:name_exercise,
+                        :category_id,
+                        :content,
+                        :time_exercise,
+                        :time_break,
+                        :min_sets,
+                        :max_sets,
+                        :min_reps,
+                        :max_reps,
+                        :highest_weight,
+                        :image)
         end
       end
     end

@@ -5,7 +5,11 @@ Rails.application.routes.draw do
     namespace :v1 do
       namespace :admins do
         resources :sessions, only: [:create]
-        resources :exercises
+        resources :exercises do
+          collection do
+            get :search_exercise
+          end
+        end
         resources :admins
         resources :categories do
           collection do
@@ -17,7 +21,11 @@ Rails.application.routes.draw do
       namespace :users do
         resources :users
         resources :sessions, only: [:create]
-        resources :exercises
+        resources :exercises do
+          collection do
+            get :search_exercise
+          end
+        end
         resources :route_days
         resources :roupackages
         resources :route_days do
