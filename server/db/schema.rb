@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_25_043616) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_26_020408) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -54,13 +54,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_25_043616) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "exercise_route_day", id: false, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "exercise_id", null: false
-    t.bigint "route_day_id", null: false
-    t.index ["exercise_id"], name: "index_exercise_route_day_on_exercise_id"
-    t.index ["route_day_id"], name: "index_exercise_route_day_on_route_day_id"
-  end
-
   create_table "exercises", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "category_id"
     t.string "name_exercise"
@@ -88,6 +81,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_25_043616) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_roupackages_on_user_id"
+  end
+
+  create_table "route_day_exercises", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "route_day_id"
+    t.bigint "exercise_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["exercise_id"], name: "index_route_day_exercises_on_exercise_id"
+    t.index ["route_day_id"], name: "index_route_day_exercises_on_route_day_id"
   end
 
   create_table "route_days", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

@@ -20,6 +20,11 @@ Rails.application.routes.draw do
         resources :exercises
         resources :route_days
         resources :roupackages
+        resources :route_days do
+          collection do
+            post :route_exercise
+          end
+        end
       end
     end
   end
