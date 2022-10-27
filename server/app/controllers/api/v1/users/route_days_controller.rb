@@ -2,34 +2,35 @@ module Api
   module V1
     module Users
       class RouteDaysController < ApplicationController
-        before_action :authenticate_request_user 
-				skip_before_action :authenticate_request_user, only: [:create]
+        before_action :authenticate_request_user
+        skip_before_action :authenticate_request_user, only: [:create]
         def index
           @route_day = RouteDay.all
           render json: @route_day, each_serializer: RouteDaySerializer
-        end	
- 
+        end
+
         def show
           @route_day = RouteDay.find(params[:id])
           render json: @route_day, each_serializer: RouteDaySerializer
         end
 
         def route_exercise
-          rouday = RouteDayExercise.find_by(exercise_id: params[:exercise_id], route_day_id: params[:route_day_id], user_id: @current_user.id)
-          if !rouday
-            @routedayexercise = RouteDayExercise.new(user_id: @current_user.id, route_day_id: params[:route_day_id], exercise_id: params[:exercise_id])
-            if @routedayexercise.save
-              render json: {
-                message: 'ok'
-              }
-            else
-              render json: {
-                message: 'failed'
-              }
+          params[:route_ex].each do |rou|
+            rou_day = rou.values[0]
+            rou.values[1].each do |exe|
+              @routedayexercise = RouteDayExercise.new(user_id: @current_user.id,
+                                                       route_day_id: rou_day,
+                                                       exercise_id: exe)
+              @routedayexercise.save
             end
+          end
+          if @routedayexercise.save
+            render json: {
+              message: 'ok'
+            }
           else
             render json: {
-              message: 'express on used'
+              message: 'failed'
             }
           end
         end
@@ -38,7 +39,7 @@ module Api
           @route_day = RouteDay.new(route_day_params)
           if @route_day.save
             render json: {
-							route_day: @route_day,  
+              route_day: @route_day,
               message: 'success'
             }
           else
@@ -61,9 +62,9 @@ module Api
         def destroy
           @route_day.destroy
         end
-      
+
         private
-    
+
         def route_day_params
           params.permit(:roupackage_id, :date, :stause)
         end
